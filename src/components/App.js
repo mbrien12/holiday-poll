@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Navigation from './Navigation'
 import '../css/App.css';
 import sampleHolidays from '../sample-holidays'
 
@@ -17,6 +18,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Navigation/>
         <h1>Holiday poll</h1>
       </div>
     );
