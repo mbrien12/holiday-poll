@@ -1,25 +1,31 @@
-import React, { Component } from 'react';
-import Navigation from './Navigation'
-import '../css/App.css';
-import sampleHolidays from '../sample-holidays'
+import React, { Component } from "react";
+import Navigation from "./Navigation";
+import PollTable from "./PollTable";
+import "../css/App.css";
+import sampleHolidays from "../sample-holidays";
 
-const holidays = sampleHolidays
+import { Container, Divider } from "semantic-ui-react";
 
-
+const holidays = sampleHolidays;
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      holidays: holidays,
-    }
+      holidays: holidays
+    };
   }
- 
+
   render() {
     return (
       <div className="App">
-        <Navigation/>
+        <Navigation />
         <h1>Holiday poll</h1>
+        <Divider hidden />
+        <Container>
+        <Divider hidden />
+          <PollTable />
+        </Container>
       </div>
     );
   }
