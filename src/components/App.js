@@ -23,8 +23,8 @@ class App extends Component {
         <h1>Holiday poll</h1>
         <Divider hidden />
         <Container>
-        <Divider hidden />
-          <PollTable />
+          <Divider hidden />
+          <PollTable holidays={this.state.holidays}/>
         </Container>
       </div>
     );

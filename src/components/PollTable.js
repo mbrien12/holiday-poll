@@ -6,16 +6,10 @@ import {
   Image,
   Label,
   Table,
-  Rating
 } from "semantic-ui-react";
 
 export default class Navigation extends Component {
   render() {
-    const backgroundImage = {
-      backgroundImage: 'url(https://www.worldtravelguide.net/wp-content/uploads/2017/04/Think-Greece-Country-Santorini-Oia-468940432-marchello74-copy.jpg)',
-      backgroundSize: 'cover',
-    }
-
     const whiteText = {
       color: 'white'
     }
@@ -32,23 +26,31 @@ export default class Navigation extends Component {
         </Table.Header>
 
         <Table.Body>
-          <Table.Row>
+        {
+          Object.keys(this.props.holidays).map(key => {
+            const holiday = this.props.holidays[key];
+            const backgroundImage = {
+              backgroundImage: holiday.image,
+              backgroundSize: 'cover',
+            }
+            return (
+            <Table.Row key={key}>
             <Table.Cell style={backgroundImage}>
               <Header as="h2" style={whiteText} >
-                Greece
+                {holiday.location}
               </Header>
             </Table.Cell>
             <Table.Cell singleLine>
               <Image
-                src="https://avatars1.githubusercontent.com/u/22551831?s=460&v=4"
+                src='https://avatars1.githubusercontent.com/u/22551831?s=460&v=4'
                 avatar
               />
             </Table.Cell>
             <Table.Cell>
-              <p>£500</p>
+              <p>{holiday.flightPrice}</p>
             </Table.Cell>
             <Table.Cell>
-              <p>"Beaches", "Ruins", "Kebabs", "Islands"</p>
+              <p>{holiday.reasons}</p>
             </Table.Cell>
             <Table.Cell>
             <Button style={{ marginLeft: 30}} color="red">
@@ -60,6 +62,9 @@ export default class Navigation extends Component {
           </Label>
           </Table.Cell>
           </Table.Row>
+            )
+          })
+        }
         </Table.Body>
       </Table>
     );
