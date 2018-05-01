@@ -11,13 +11,21 @@ import {
 
 export default class Navigation extends Component {
   render() {
+    const backgroundImage = {
+      backgroundImage: 'url(https://www.worldtravelguide.net/wp-content/uploads/2017/04/Think-Greece-Country-Santorini-Oia-468940432-marchello74-copy.jpg)',
+      backgroundSize: 'cover',
+    }
+
+    const whiteText = {
+      color: 'white'
+    }
     return (
       <Table celled padded stackable>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell singleLine>Where?</Table.HeaderCell>
             <Table.HeaderCell>Who wants to go?</Table.HeaderCell>
-            <Table.HeaderCell>Flight price</Table.HeaderCell>
+            <Table.HeaderCell>How much are flights?</Table.HeaderCell>
             <Table.HeaderCell>Why should we go?</Table.HeaderCell>
             <Table.HeaderCell>Vote</Table.HeaderCell>
           </Table.Row>
@@ -25,8 +33,8 @@ export default class Navigation extends Component {
 
         <Table.Body>
           <Table.Row>
-            <Table.Cell>
-              <Header as="h2">
+            <Table.Cell style={backgroundImage}>
+              <Header as="h2" style={whiteText} >
                 Greece
               </Header>
             </Table.Cell>
