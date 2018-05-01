@@ -15,3 +15,5 @@ const holidays = {
     reasons: ["Tacos", "Tequilla"],
   }
 }
+
+export default holidays
