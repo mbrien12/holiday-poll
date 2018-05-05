@@ -13,6 +13,26 @@ export default class PollTable extends Component {
     const whiteText = {
       color: 'white'
     }
+
+    const holidayArray = [
+      this.props.holidays
+    ]
+
+    // Try something like this....
+
+    // function compare(a,b) {
+    //   if (a.last_nom < b.last_nom)
+    //     return -1;
+    //   if (a.last_nom > b.last_nom)
+    //     return 1;
+    //   return 0;
+    // }
+    
+    // objs.sort(compare);
+    
+
+
+    console.log(test)
     return (
       <Table celled padded stackable>
         <Table.Header>
