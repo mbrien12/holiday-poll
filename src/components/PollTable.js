@@ -30,7 +30,7 @@ export default class Navigation extends Component {
           Object.keys(this.props.holidays).map(key => {
             const holiday = this.props.holidays[key];
             const backgroundImage = {
-              backgroundImage: `url(${holiday.image})`,
+              backgroundImage: `linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.3) 50%),url(${holiday.image})`,
               backgroundSize: 'cover',
             }
             return (
