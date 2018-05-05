@@ -47,7 +47,7 @@ export default class Navigation extends Component {
               />
             </Table.Cell>
             <Table.Cell>
-              <p>{holiday.flightPrice}</p>
+              <p>£ {holiday.flightPrice}</p>
             </Table.Cell>
             <Table.Cell>
               {holiday.reasons.map((reason, i) => {
@@ -57,12 +57,12 @@ export default class Navigation extends Component {
               })}
             </Table.Cell>
             <Table.Cell>
-            <Button style={{ marginLeft: 30}} color="red">
+            <Button style={{ marginLeft: 30}} color="red" onClick={() => this.props.addVote(holiday, key)}>
             <Icon name="heart" />
-            Like
+            Yes please
           </Button>
           <Label as="a" basic color="red" pointing="left">
-            1
+            {holiday.totalVotes}
           </Label>
           </Table.Cell>
           </Table.Row>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from "react"; 
 import Navigation from "./Navigation";
 import PollTable from "./PollTable";
 import "../css/App.css";
@@ -14,7 +14,18 @@ class App extends Component {
     this.state = {
       holidays: holidays
     };
+    this.addVote = this.addVote.bind(this);
   }
+
+  addVote(holiday, key) {
+    const newHolidays = Object.assign({}, this.state.holidays);
+    newHolidays[key].totalVotes += 1;
+    this.setState({
+      holidays: newHolidays
+    })
+  }
+
+
 
   render() {
     return (
@@ -24,7 +35,7 @@ class App extends Component {
         <Divider hidden />
         <Container>
           <Divider hidden />
-          <PollTable holidays={this.state.holidays}/>
+          <PollTable holidays={this.state.holidays} addVote={this.addVote}/>
         </Container>
       </div>
     );
@@ -32,3 +43,6 @@ class App extends Component {
 }
 
 export default App;
+
+
+// method that add 1 to totalVotes onClick
