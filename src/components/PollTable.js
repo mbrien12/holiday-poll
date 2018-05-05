@@ -50,7 +50,11 @@ export default class Navigation extends Component {
               <p>{holiday.flightPrice}</p>
             </Table.Cell>
             <Table.Cell>
-              <p>{holiday.reasons}</p>
+              {holiday.reasons.map((reason, i) => {
+                return (
+                  <p key={i}>{reason}</p>
+                )
+              })}
             </Table.Cell>
             <Table.Cell>
             <Button style={{ marginLeft: 30}} color="red">
