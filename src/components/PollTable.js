@@ -30,7 +30,7 @@ export default class Navigation extends Component {
           Object.keys(this.props.holidays).map(key => {
             const holiday = this.props.holidays[key];
             const backgroundImage = {
-              backgroundImage: holiday.image,
+              backgroundImage: `url(${holiday.image})`,
               backgroundSize: 'cover',
             }
             return (
