@@ -8,7 +8,7 @@ import {
   Table,
 } from "semantic-ui-react";
 
-export default class Navigation extends Component {
+export default class PollTable extends Component {
   render() {
     const whiteText = {
       color: 'white'
