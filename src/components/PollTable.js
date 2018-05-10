@@ -14,15 +14,11 @@ export default class PollTable extends Component {
       color: 'white'
     }
 
-    const holidays = this.props.holidays
-
-    let sorted = Object.values(holidays).sort(function(obj1, obj2){
+    let sorted = Object.values(this.props.holidays).sort(function(obj1, obj2){
       return obj2.totalVotes - obj1.totalVotes
     })
 
     console.log(sorted);
-
-
 
     return (
       <Table celled padded stackable>
@@ -38,7 +34,7 @@ export default class PollTable extends Component {
 
         <Table.Body>
         {
-          Object.keys(this.props.holidays).map(key => {
+          Object.keys(sorted).map(key => {
             const holiday = this.props.holidays[key];
             const backgroundImage = {
               backgroundImage: `linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.3) 50%),url(${holiday.image})`,
