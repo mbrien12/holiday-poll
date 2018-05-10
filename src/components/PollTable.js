@@ -14,25 +14,16 @@ export default class PollTable extends Component {
       color: 'white'
     }
 
-    const holidayArray = [
-      this.props.holidays
-    ]
+    const holidays = this.props.holidays
 
-    // Try something like this....
+    let sorted = Object.values(holidays).sort(function(obj1, obj2){
+      return obj2.totalVotes - obj1.totalVotes
+    })
 
-    // function compare(a,b) {
-    //   if (a.last_nom < b.last_nom)
-    //     return -1;
-    //   if (a.last_nom > b.last_nom)
-    //     return 1;
-    //   return 0;
-    // }
-    
-    // objs.sort(compare);
-    
+    console.log(sorted);
 
 
-    console.log(test)
+
     return (
       <Table celled padded stackable>
         <Table.Header>
