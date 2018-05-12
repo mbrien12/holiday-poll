@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Checkbox, Form, Message } from "semantic-ui-react";
+import { Button, Form, Message } from "semantic-ui-react";
 
 export default class AddHolidayForm extends Component {
 

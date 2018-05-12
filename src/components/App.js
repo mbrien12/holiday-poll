@@ -6,10 +6,6 @@ import "../css/App.css";
 import sampleHolidays from "../sample-holidays";
 
 import {
-  Button,
-  Header,
-  Icon,
-  Modal,
   Container,
   Divider
 } from "semantic-ui-react";
@@ -49,7 +45,7 @@ class App extends Component {
 
   addHoliday = event => {
     event.preventDefault();
-    // const holidays = {...this.state.holidays}
+    const holidays = {...this.state.holidays}
     const newHoliday = {
       location: this.state.location,
       image: this.state.image,
@@ -58,16 +54,11 @@ class App extends Component {
       totalVotes: 0,
       voters: {}
     };
-    console.log(newHoliday)
+    holidays[`holiday${Date.now()}`] = newHoliday;
+    this.setState({holidays})
+    console.log(this.state.holidays)
   };
 
-  // addHoliday = holiday => {
-  //   const holidays = {...this.state.holidays};
-  //   holidays[`holiday${Date.now()}`] = holiday;
-  //   this.setState({holidays})
-  //   console.log('holiday added');
-  //   console.log(this.state.holidays)
-  // }
 
   render() {
     return (

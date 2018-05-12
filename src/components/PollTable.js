@@ -35,7 +35,7 @@ export default class PollTable extends Component {
               backgroundSize: 'cover',
             }
             return (
-            <Table.Row key={Date.now()}>
+            <Table.Row key={key}>
             <Table.Cell style={backgroundImage}>
               <Header as="h2" style={whiteText} >
                 {holiday.location}
