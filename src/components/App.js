@@ -16,7 +16,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      holidays: holidays
+      holidays: holidays,
+      formSuccess: false,
     };
     this.addVote = this.addVote.bind(this);
   }
@@ -56,7 +57,7 @@ class App extends Component {
     };
     const key = holidays.length
     holidays[key] = newHoliday;
-    this.setState({holidays})
+    this.setState({holidays: holidays, formSuccess: true})
     console.log(this.state.holidays)
   };
 
@@ -67,7 +68,7 @@ class App extends Component {
         <Navigation />
         <h1>Holiday poll</h1>
         <Divider hidden />
-        <ModalForm addHoliday={this.addHoliday} onChange={this.onChange} />
+        <ModalForm addHoliday={this.addHoliday} onChange={this.onChange} formSuccess={this.state.formSuccess}  />
         <Container>
           <Divider hidden />
           <PollTable holidays={this.state.holidays} addVote={this.addVote} />
