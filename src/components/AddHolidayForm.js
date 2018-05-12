@@ -3,21 +3,6 @@ import { Button, Form, Message } from "semantic-ui-react";
 
 export default class AddHolidayForm extends Component {
 
-
-  // createHoliday = event => {
-  //   event.preventDefault();
-  //   const reasons = []
-  //   const holiday = {
-  //     location: event.target.value,
-  //     image: this.target.name.image,
-  //     flightPrice: this.target.name.flightPrice,
-  //     reasons: reasons.push(this.target.name.reasons),
-  //     totalVotes: 0,
-  //     voters: {}
-  //   }
-  //   console.log(holiday)
-  // };
-
   render() {
     return (
       <Form size="big" onSubmit={this.props.addHoliday}>
@@ -45,23 +30,7 @@ export default class AddHolidayForm extends Component {
             fluid
             label="Why?"
             name="reasons"
-            placeholder="Sun"
-            onChange={this.props.onChange}
-            value={this.props.reasons}
-          />
-          <Form.Input
-            fluid
-            label="Another reason?"
-            name="reasons"
-            placeholder="Sea"
-            onChange={this.props.onChange}
-            value={this.props.reasons}
-          />
-          <Form.Input
-            fluid
-            label="One more..."
-            name="reasons"
-            placeholder="Suspicious Parents"
+            placeholder="To annoy Tom"
             onChange={this.props.onChange}
             value={this.props.reasons}
           />

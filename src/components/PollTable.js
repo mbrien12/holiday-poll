@@ -51,11 +51,7 @@ export default class PollTable extends Component {
               <p>£ {holiday.flightPrice}</p>
             </Table.Cell>
             <Table.Cell>
-              {holiday.reasons.map((reason, i) => {
-                return (
-                  <p key={i}>{reason}</p>
-                )
-              })}
+              {holiday.reasons}
             </Table.Cell>
             <Table.Cell>
             <Button style={{ marginLeft: 30}} color="red" onClick={() => this.props.addVote(holiday, key)}>

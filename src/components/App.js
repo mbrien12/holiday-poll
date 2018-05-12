@@ -45,7 +45,7 @@ class App extends Component {
 
   addHoliday = event => {
     event.preventDefault();
-    const holidays = {...this.state.holidays}
+    const holidays = this.state.holidays
     const newHoliday = {
       location: this.state.location,
       image: this.state.image,
@@ -54,13 +54,14 @@ class App extends Component {
       totalVotes: 0,
       voters: {}
     };
-    holidays[`holiday${Date.now()}`] = newHoliday;
+    const key = holidays.length
+    holidays[key] = newHoliday;
     this.setState({holidays})
     console.log(this.state.holidays)
   };
 
 
-  render() {
+  render() { 
     return (
       <div className="App">
         <Navigation />
