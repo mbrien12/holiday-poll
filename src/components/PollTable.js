@@ -14,8 +14,8 @@ export default class PollTable extends Component {
       color: 'white'
     }
 
-    let sorted = Object.values(this.props.holidays).sort(function(obj1, obj2){
-      return obj2.totalVotes - obj1.totalVotes
+    let sorted = Object.values(this.props.holidays).sort(function(hol1, hol2){
+      return hol2.totalVotes - hol1.totalVotes
     })
 
     console.log(sorted);
@@ -41,7 +41,7 @@ export default class PollTable extends Component {
               backgroundSize: 'cover',
             }
             return (
-            <Table.Row key={key}>
+            <Table.Row key={holiday.id}>
             <Table.Cell style={backgroundImage}>
               <Header as="h2" style={whiteText} >
                 {holiday.location}
