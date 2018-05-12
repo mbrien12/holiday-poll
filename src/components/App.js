@@ -81,6 +81,7 @@ class App extends Component {
           addHoliday={this.addHoliday}
           onChange={this.onChange}
           formSubmit={this.state.formSubmit}
+          validData={this.state.validData}
         />
         <Container>
           <Divider hidden />
