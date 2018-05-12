@@ -5,10 +5,7 @@ import ModalForm from "./ModalForm";
 import "../css/App.css";
 import sampleHolidays from "../sample-holidays";
 
-import {
-  Container,
-  Divider
-} from "semantic-ui-react";
+import { Container, Divider } from "semantic-ui-react";
 
 const holidays = sampleHolidays;
 
@@ -17,7 +14,8 @@ class App extends Component {
     super(props);
     this.state = {
       holidays: holidays,
-      formSuccess: false,
+      validData: false,
+      formSubmit: false
     };
     this.addVote = this.addVote.bind(this);
   }
@@ -42,11 +40,24 @@ class App extends Component {
     this.setState({
       [name]: value
     });
+    this.validateData();
+  };
+
+  validateData = () => {
+    const { location, flightPrice, reasons, image } = this.state;
+    if ((typeof location !== "undefined") 
+    && (typeof flightPrice !== "undefined")
+    && (typeof reasons !== "undefined")
+    && (typeof image !== "undefined") ) {
+      this.setState({
+        validData: true
+      });
+    }
   };
 
   addHoliday = event => {
     event.preventDefault();
-    const holidays = this.state.holidays
+    const holidays = this.state.holidays;
     const newHoliday = {
       location: this.state.location,
       image: this.state.image,
@@ -55,20 +66,22 @@ class App extends Component {
       totalVotes: 0,
       voters: {}
     };
-    const key = holidays.length
+    const key = holidays.length;
     holidays[key] = newHoliday;
-    this.setState({holidays: holidays, formSuccess: true})
-    console.log(this.state.holidays)
+    this.setState({ holidays: holidays, formSubmit: true });
   };
 
-
-  render() { 
+  render() {
     return (
       <div className="App">
         <Navigation />
         <h1>Holiday poll</h1>
         <Divider hidden />
-        <ModalForm addHoliday={this.addHoliday} onChange={this.onChange} formSuccess={this.state.formSuccess}  />
+        <ModalForm
+          addHoliday={this.addHoliday}
+          onChange={this.onChange}
+          formSubmit={this.state.formSubmit}
+        />
         <Container>
           <Divider hidden />
           <PollTable holidays={this.state.holidays} addVote={this.addVote} />

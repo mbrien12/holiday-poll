@@ -3,6 +3,7 @@ import { Button, Form, Message } from "semantic-ui-react";
 
 export default class AddHolidayForm extends Component {
   render() {
+   
     return (
       <Form success size="big" onSubmit={this.props.addHoliday}>
         <Form.Group widths="equal">
@@ -29,7 +30,7 @@ export default class AddHolidayForm extends Component {
           fluid
           label="Why?"
           name="reasons"
-          placeholder="To annoy Tom"
+          placeholder="To annoy Jonny"
           onChange={this.props.onChange}
           value={this.props.reasons}
         />
