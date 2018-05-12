@@ -1,10 +1,11 @@
 import React, { Component } from "react"; 
 import Navigation from "./Navigation";
 import PollTable from "./PollTable";
+import ModalForm from "./ModalForm";
 import "../css/App.css";
 import sampleHolidays from "../sample-holidays";
 
-import { Container, Divider } from "semantic-ui-react";
+import { Button, Header, Icon, Modal, Container, Divider } from "semantic-ui-react";
 
 const holidays = sampleHolidays;
 
@@ -35,6 +36,7 @@ class App extends Component {
         <Navigation />
         <h1>Holiday poll</h1>
         <Divider hidden />
+        <ModalForm/>
         <Container>
           <Divider hidden />
           <PollTable holidays={this.state.holidays} addVote={this.addVote}/>
