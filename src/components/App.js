@@ -20,12 +20,16 @@ class App extends Component {
   addVote(holiday, key) {
     const newHolidays = Object.assign({}, this.state.holidays);
     newHolidays[key].totalVotes += 1;
+    const sortedHolidays =  Object.values(newHolidays).sort(function(hol1, hol2){
+      return hol2.totalVotes - hol1.totalVotes
+    })
     this.setState({
-      holidays: newHolidays
+      holidays: sortedHolidays,
     })
   }
 
   render() {
+    console.log(this.state.holidays)
     return (
       <div className="App">
         <Navigation />
