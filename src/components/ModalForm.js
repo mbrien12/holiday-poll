@@ -13,7 +13,7 @@ export default class ModalForm extends Component {
       <Modal trigger={<Button basic color='purple'> <Icon name='add' /> Add Holiday</Button>} closeIcon style={modalStyle}>
       <Header icon='sun' content='Suggest a Holiday' />
       <Modal.Content>
-        <AddHolidayForm/>
+        <AddHolidayForm  addHoliday={this.props.addHoliday} onChange={this.props.onChange}/>
       </Modal.Content>
     </Modal>
     )

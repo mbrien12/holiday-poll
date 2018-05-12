@@ -1,11 +1,18 @@
-import React, { Component } from "react"; 
+import React, { Component } from "react";
 import Navigation from "./Navigation";
 import PollTable from "./PollTable";
 import ModalForm from "./ModalForm";
 import "../css/App.css";
 import sampleHolidays from "../sample-holidays";
 
-import { Button, Header, Icon, Modal, Container, Divider } from "semantic-ui-react";
+import {
+  Button,
+  Header,
+  Icon,
+  Modal,
+  Container,
+  Divider
+} from "semantic-ui-react";
 
 const holidays = sampleHolidays;
 
@@ -21,25 +28,57 @@ class App extends Component {
   addVote(holiday, key) {
     const newHolidays = Object.assign({}, this.state.holidays);
     newHolidays[key].totalVotes += 1;
-    const sortedHolidays =  Object.values(newHolidays).sort(function(hol1, hol2){
-      return hol2.totalVotes - hol1.totalVotes
-    })
+    const sortedHolidays = Object.values(newHolidays).sort(function(
+      hol1,
+      hol2
+    ) {
+      return hol2.totalVotes - hol1.totalVotes;
+    });
     this.setState({
-      holidays: sortedHolidays,
-    })
+      holidays: sortedHolidays
+    });
   }
 
+  onChange = event => {
+    const value = event.target.value;
+    const name = event.target.name;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  addHoliday = event => {
+    event.preventDefault();
+    // const holidays = {...this.state.holidays}
+    const newHoliday = {
+      location: this.state.location,
+      image: this.state.image,
+      flightPrice: this.state.flightPrice,
+      reasons: this.state.reasons,
+      totalVotes: 0,
+      voters: {}
+    };
+    console.log(newHoliday)
+  };
+
+  // addHoliday = holiday => {
+  //   const holidays = {...this.state.holidays};
+  //   holidays[`holiday${Date.now()}`] = holiday;
+  //   this.setState({holidays})
+  //   console.log('holiday added');
+  //   console.log(this.state.holidays)
+  // }
+
   render() {
-    console.log(this.state.holidays)
     return (
       <div className="App">
         <Navigation />
         <h1>Holiday poll</h1>
         <Divider hidden />
-        <ModalForm/>
+        <ModalForm addHoliday={this.addHoliday} onChange={this.onChange} />
         <Container>
           <Divider hidden />
-          <PollTable holidays={this.state.holidays} addVote={this.addVote}/>
+          <PollTable holidays={this.state.holidays} addVote={this.addVote} />
         </Container>
       </div>
     );
@@ -47,6 +86,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-// method that add 1 to totalVotes onClick
