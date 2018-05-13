@@ -2,8 +2,8 @@ import Rebase from "re-base";
 import firebase from "firebase";
 
 const firebaseApp = firebase.initializeApp({
-  apiKey: "AIzaSyBmaahhewd5t0HXWVZiNBtDH9vlXG8UBnM",
-  authDomain: "holiday-poll.firebaseapp.com",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
   databaseURL: "https://holiday-poll.firebaseio.com",  
 })
 
