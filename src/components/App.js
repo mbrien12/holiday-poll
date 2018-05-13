@@ -8,13 +8,13 @@ import base from '../base';
 
 import { Container, Divider } from "semantic-ui-react";
 
-const holidays = sampleHolidays;
+// const holidays = sampleHolidays;
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      holidays: holidays,
+      holidays: {},
       validData: false,
       formSubmit: false
     };
