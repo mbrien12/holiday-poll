@@ -3,7 +3,6 @@ import { Button, Form, Message } from "semantic-ui-react";
 
 export default class AddHolidayForm extends Component {
   render() {
-
     const isEnabled = this.props.validData
   
     return (
@@ -44,7 +43,7 @@ export default class AddHolidayForm extends Component {
           onChange={this.props.onChange}
           value={this.props.image}
         />
-        <Button disabled={!isEnabled} type="submit">Submit</Button>
+        <Button disabled={!isEnabled} primary type="submit">Submit</Button>
         {this.props.formSubmit ? 
           <Message
             success

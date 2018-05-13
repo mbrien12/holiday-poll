@@ -7,7 +7,7 @@ export default class Navigation extends Component {
       <Menu secondary stackable size='massive'>
         <Menu.Item position="right"
         >
-        <Button inverted color='purple'>Log-in</Button>
+        <Button inverted color='violet'>Log-in</Button>
         </Menu.Item>
       </Menu>
     )

@@ -12,8 +12,8 @@ export default class ModalForm extends Component {
     return (
       <Modal
         trigger={
-          <Button basic color="purple">
-            {" "}
+          <Button inverted color="violet">
+           
             <Icon name="add" /> Add Holiday
           </Button>
         }

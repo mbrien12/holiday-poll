@@ -4,6 +4,7 @@ import PollTable from "./PollTable";
 import ModalForm from "./ModalForm";
 import "../css/App.css";
 import sampleHolidays from "../sample-holidays";
+import base from '../base';
 
 import { Container, Divider } from "semantic-ui-react";
 
@@ -17,10 +18,18 @@ class App extends Component {
       validData: false,
       formSubmit: false
     };
-    this.addVote = this.addVote.bind(this);
   }
 
-  addVote(holiday, key) {
+  componentWillMount() {
+    this.ref = base.syncState('holidays', {
+      context: this,
+      state: "holidays",
+      validData: true,
+      formSubmit: true,
+    });
+  }
+
+  addVote = (holiday, key) => {
     const newHolidays = Object.assign({}, this.state.holidays);
     newHolidays[key].totalVotes += 1;
     const sortedHolidays = Object.values(newHolidays).sort(function(
