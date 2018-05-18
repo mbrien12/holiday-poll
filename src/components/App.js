@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import Navigation from "./Navigation";
-import PollTable from "./PollTable";
-import ModalForm from "./ModalForm";
+import LandingPage from "./LandingPage";
+import LoggedIn from "./LoggedIn";
 import "../css/App.css";
-import sampleHolidays from "../sample-holidays";
-import base from '../base';
+import base from "../base";
 
-import { Container, Divider } from "semantic-ui-react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from "react-router-dom";
 
 // const holidays = sampleHolidays;
 
@@ -21,11 +26,11 @@ class App extends Component {
   }
 
   componentWillMount() {
-    this.ref = base.syncState('holidays', {
+    this.ref = base.syncState("holidays", {
       context: this,
       state: "holidays",
       validData: true,
-      formSubmit: true,
+      formSubmit: true
     });
   }
 
@@ -41,7 +46,7 @@ class App extends Component {
     this.setState({
       holidays: sortedHolidays
     });
-  }
+  };
 
   onChange = event => {
     const value = event.target.value;
@@ -54,10 +59,12 @@ class App extends Component {
 
   validateData = () => {
     const { location, flightPrice, reasons, image } = this.state;
-    if ((typeof location !== "undefined") 
-    && (typeof flightPrice !== "undefined")
-    && (typeof reasons !== "undefined")
-    && (typeof image !== "undefined") ) {
+    if (
+      typeof location !== "undefined" &&
+      typeof flightPrice !== "undefined" &&
+      typeof reasons !== "undefined" &&
+      typeof image !== "undefined"
+    ) {
       this.setState({
         validData: true
       });
@@ -84,18 +91,20 @@ class App extends Component {
     return (
       <div className="App">
         <Navigation />
-        <h1>Holiday poll</h1>
-        <Divider hidden />
-        <ModalForm
-          addHoliday={this.addHoliday}
-          onChange={this.onChange}
-          formSubmit={this.state.formSubmit}
-          validData={this.state.validData}
+        <Route path="/" exact={true} render={() => <LandingPage someProp={100} />} />
+        <Route
+          path="/log-in"
+          render={() => (
+            <LoggedIn
+              addHoliday={this.addHoliday}
+              onChange={this.onChange}
+              formSubmit={this.state.formSubmit}
+              validData={this.state.validData}
+              holidays={this.state.holidays}
+              addVote={this.addVote}
+            />
+          )}
         />
-        <Container>
-          <Divider hidden />
-          <PollTable holidays={this.state.holidays} addVote={this.addVote} />
-        </Container>
       </div>
     );
   }
