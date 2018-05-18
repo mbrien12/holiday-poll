@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Navigation from "./Navigation";
 import LandingPage from "./LandingPage";
 import LoggedIn from "./LoggedIn";
 import "../css/App.css";
@@ -90,7 +89,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navigation />
         <Route path="/" exact={true} render={() => <LandingPage someProp={100} />} />
         <Route
           path="/log-in"
