@@ -13,8 +13,6 @@ import {
   Redirect
 } from "react-router-dom";
 
-// const holidays = sampleHolidays;
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -36,13 +34,12 @@ class App extends Component {
   };
 
   logout = () => {
-    auth.signOut()
-      .then(() => {
-        this.setState({
-          user: null
-        })
-      })
-  }
+    auth.signOut().then(() => {
+      this.setState({
+        user: null
+      });
+    });
+  };
 
   componentWillMount() {
     this.ref = base.syncState("holidays", {
@@ -114,9 +111,20 @@ class App extends Component {
           login={this.login}
           logout={this.logout}
         />
-        <Route path="/" exact={true} render={() => <LandingPage />} />
+
         <Route
-          path="/log-in"
+          path="/"
+          exact={true}
+          render={() => (
+            <LandingPage
+              user={this.state.user}
+              login={this.login}
+              logout={this.logout}
+            />
+          )}
+        />
+        <Route
+          path="/my-holidays"
           render={() => (
             <LoggedIn
               addHoliday={this.addHoliday}
@@ -128,6 +136,7 @@ class App extends Component {
             />
           )}
         />
+        {this.state.user ? <Redirect to="/my-holidays" /> : console.log('not logged in ')}
       </div>
     );
   }

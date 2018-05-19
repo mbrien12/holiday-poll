@@ -12,7 +12,6 @@ export default class Navigation extends Component {
           :
           <Button onClick={this.props.login} inverted color='violet'>Log In</Button>            
         }
-     
         </Menu.Item>
       </Menu>
     )

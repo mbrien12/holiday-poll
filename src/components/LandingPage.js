@@ -9,11 +9,13 @@ export default class LandingPage extends Component {
       <div style={{ marginTop: '100px' }}>
         <h1>WTF are we holidaying?</h1>
         <h2>Life's too short for holiday spreadsheets</h2>
-        <Link to="/log-in">
-        <Button style={{marginTop: '30px'}} color="google plus">
+        {this.props.user ?
+          <Button onClick={this.props.logout} inverted color='violet'>Log Out</Button>      
+          :
+          <Button onClick={this.props.login}  style={{marginTop: '30px'}} color="google plus">
           <Icon name="google plus" /> Log in with Google
-        </Button>
-        </Link>
+        </Button>         
+        }
       </div>
     );
   }
