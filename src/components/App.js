@@ -41,7 +41,7 @@ class App extends Component {
     });
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.ref = base.syncState("holidays", {
       context: this,
       state: "holidays",
