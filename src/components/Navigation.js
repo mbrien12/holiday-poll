@@ -7,7 +7,12 @@ export default class Navigation extends Component {
       <Menu secondary stackable size='massive'>
         <Menu.Item position="right"
         >
-        <Button inverted color='violet'>Log-in</Button>
+        {this.props.user ?
+          <Button onClick={this.props.logout} inverted color='violet'>Log Out</Button>              
+          :
+          <Button onClick={this.props.login} inverted color='violet'>Log In</Button>            
+        }
+     
         </Menu.Item>
       </Menu>
     )

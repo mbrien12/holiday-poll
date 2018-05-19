@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import Navigation from "./Navigation";
 import LandingPage from "./LandingPage";
 import LoggedIn from "./LoggedIn";
 import "../css/App.css";
-import base from "../base";
+import base, { auth, provider } from "../base";
 
 import {
   BrowserRouter as Router,
@@ -20,8 +21,27 @@ class App extends Component {
     this.state = {
       holidays: {},
       validData: false,
-      formSubmit: false
+      formSubmit: false,
+      user: null
     };
+  }
+
+  login = () => {
+    auth.signInWithPopup(provider).then(result => {
+      const user = result.user;
+      this.setState({
+        user
+      });
+    });
+  };
+
+  logout = () => {
+    auth.signOut()
+      .then(() => {
+        this.setState({
+          user: null
+        })
+      })
   }
 
   componentWillMount() {
@@ -89,7 +109,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route path="/" exact={true} render={() => <LandingPage someProp={100} />} />
+        <Navigation
+          user={this.state.user}
+          login={this.login}
+          logout={this.logout}
+        />
+        <Route path="/" exact={true} render={() => <LandingPage />} />
         <Route
           path="/log-in"
           render={() => (
