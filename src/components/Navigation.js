@@ -1,19 +1,28 @@
-import React, { Component } from 'react'
-import { Button, Menu } from 'semantic-ui-react'
+import React, { Component } from "react";
+import ModalForm from "./ModalForm";
+
+import { Button, Image, Menu } from "semantic-ui-react";
 
 export default class Navigation extends Component {
   render() {
     return (
-      <Menu secondary stackable size='massive'>
-        <Menu.Item position="right"
-        >
-        {this.props.user ?
-          <Button onClick={this.props.logout} inverted color='violet'>Log Out</Button>              
-          :
-          <Button onClick={this.props.login} inverted color='violet'>Log In</Button>            
-        }
-        </Menu.Item>
-      </Menu>
-    )
+      <div>
+        {this.props.user ? (
+          <Menu secondary stackable size="massive">
+            <Menu.Item
+              name="log out"
+              onClick={this.props.logout}
+              position = "right"
+            />
+            <ModalForm
+            addHoliday={this.props.addHoliday}
+            onChange={this.props.onChange}
+            formSubmit={this.props.formSubmit}
+            validData={this.props.validData}
+          />
+          </Menu>
+        ) : null}
+      </div>
+    );
   }
 }

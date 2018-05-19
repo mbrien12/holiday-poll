@@ -48,9 +48,9 @@ class App extends Component {
       validData: true,
       formSubmit: true
     });
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(user => {
       if (user) {
-        this.setState({ user })
+        this.setState({ user });
       }
     });
   }
@@ -115,6 +115,10 @@ class App extends Component {
           user={this.state.user}
           login={this.login}
           logout={this.logout}
+          addHoliday={this.addHoliday}
+          onChange={this.onChange}
+          formSubmit={this.state.formSubmit}
+          validData={this.state.validData}
         />
 
         <Route
@@ -132,12 +136,9 @@ class App extends Component {
           path="/my-holidays"
           render={() => (
             <LoggedIn
-              addHoliday={this.addHoliday}
-              onChange={this.onChange}
-              formSubmit={this.state.formSubmit}
-              validData={this.state.validData}
               holidays={this.state.holidays}
               addVote={this.addVote}
+              user={this.state.user}
             />
           )}
         />
