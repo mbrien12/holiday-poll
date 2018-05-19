@@ -48,6 +48,11 @@ class App extends Component {
       validData: true,
       formSubmit: true
     });
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user })
+      }
+    });
   }
 
   addVote = (holiday, key) => {
@@ -136,7 +141,7 @@ class App extends Component {
             />
           )}
         />
-        {this.state.user ? <Redirect to="/my-holidays" /> : console.log('not logged in ')}
+        {this.state.user ? <Redirect to="/my-holidays" /> : <Redirect to="/" />}
       </div>
     );
   }
