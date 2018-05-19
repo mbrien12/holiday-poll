@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Header, Image } from "semantic-ui-react";
-import Fade from 'react-reveal/Fade';
+import Fade from "react-reveal/Fade";
 
 export default class WelcomeBanner extends Component {
   render() {
@@ -17,10 +17,10 @@ export default class WelcomeBanner extends Component {
               />
             </Header>
             <Fade top>
-              <Header size="medium">
+              <Header style={{marginBottom: '50px'}} size="medium">
                 Where do you want to go on holiday this year?
               </Header>
-              </Fade>
+            </Fade>
           </div>
         ) : null}
       </div>

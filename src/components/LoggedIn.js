@@ -15,6 +15,7 @@ export default class LoggedIn extends Component {
           <PollTable
             holidays={this.props.holidays}
             addVote={this.props.addVote}
+            user={this.props.user}
           />
         </Container>
       </div>
