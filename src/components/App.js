@@ -58,7 +58,6 @@ class App extends Component {
   addVote = (holiday, key) => {
     const newHolidays = Object.assign({}, this.state.holidays);
     newHolidays[key].totalVotes += 1;
-    newHolidays[key].voters = (this.state.user.photoURL)
     console.log(newHolidays[key].voters)
     const sortedHolidays = Object.values(newHolidays).sort(function(
       hol1,
@@ -102,7 +101,7 @@ class App extends Component {
       image: this.state.image,
       flightPrice: this.state.flightPrice,
       reasons: this.state.reasons,
-      voters: [],
+      voters: [this.state.user.photoURL],
       totalVotes: 0,
     };
     const key = holidays.length;

@@ -45,7 +45,7 @@ export default class PollTable extends Component {
             </Table.Cell>
             <Table.Cell singleLine>
               <Image
-                src={ this.props.user ? this.props.user.imageURL : 'https://avatars1.githubusercontent.com/u/22551831?s=460&v=4'}
+                src={holiday.voters[0]}
                 avatar
               />
             </Table.Cell>
