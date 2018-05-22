@@ -1,20 +1,11 @@
 import React, { Component } from "react";
-import {
-  Button,
-  Header,
-  Icon,
-  Image,
-  Label,
-  Table,
-} from "semantic-ui-react";
+import { Button, Header, Icon, Image, Label, Table } from "semantic-ui-react";
 
 export default class PollTable extends Component {
-
   render() {
     const whiteText = {
-      color: 'white'
-    }
-  
+      color: "white"
+    };
 
     return (
       <Table celled padded stackable>
@@ -29,45 +20,46 @@ export default class PollTable extends Component {
         </Table.Header>
 
         <Table.Body>
-        {
-          Object.keys(this.props.holidays).map(key => {
+          {Object.keys(this.props.holidays).map(key => {
             const holiday = this.props.holidays[key];
             const backgroundImage = {
-              backgroundImage: `linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.3) 50%),url(${holiday.image})`,
-              backgroundSize: 'cover',
-            }
+              backgroundImage: `linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.3) 50%),url(${
+                holiday.image
+              })`,
+              backgroundSize: "cover"
+            };
             return (
-            <Table.Row key={key}>
-            <Table.Cell style={backgroundImage}>
-              <Header as="h2" style={whiteText} >
-                {holiday.location}
-              </Header>
-            </Table.Cell>
-            <Table.Cell singleLine>
-              <Image
-                src={holiday.voters[0]}
-                avatar
-              />
-            </Table.Cell>
-            <Table.Cell>
-              <p>£ {holiday.flightPrice}</p>
-            </Table.Cell>
-            <Table.Cell>
-              {holiday.reasons}
-            </Table.Cell>
-            <Table.Cell>
-            <Button style={{ marginLeft: 30}} color="red" onClick={() => this.props.addVote(holiday, key)}>
-            <Icon name="heart" />
-            Yes please
-          </Button>
-          <Label as="a" basic color="red" pointing="left">
-            {holiday.totalVotes}
-          </Label>
-          </Table.Cell>
-          </Table.Row>
-            )
-          })
-        }
+              <Table.Row key={key}>
+                <Table.Cell style={backgroundImage}>
+                  <Header as="h2" style={whiteText}>
+                    {holiday.location}
+                  </Header>
+                </Table.Cell>
+                <Table.Cell singleLine>
+                  {[holiday.voters].map(voter => {
+                    return <Image src={voter} avatar />;
+                  })}
+                </Table.Cell>
+                <Table.Cell>
+                  <p>£ {holiday.flightPrice}</p>
+                </Table.Cell>
+                <Table.Cell>{holiday.reasons}</Table.Cell>
+                <Table.Cell>
+                  <Button
+                    style={{ marginLeft: 30 }}
+                    color="red"
+                    onClick={() => this.props.addVote(holiday, key)}
+                  >
+                    <Icon name="heart" />
+                    Yes please
+                  </Button>
+                  <Label as="a" basic color="red" pointing="left">
+                    {holiday.totalVotes}
+                  </Label>
+                </Table.Cell>
+              </Table.Row>
+            );
+          })}
         </Table.Body>
       </Table>
     );
