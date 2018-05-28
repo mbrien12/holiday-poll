@@ -28,6 +28,20 @@ export default class PollTable extends Component {
               })`,
               backgroundSize: "cover"
             };
+            const images = [holiday.voters].map(voters => {
+              if (Array.isArray(voters)) {
+                voters.map((voter, i) => {
+                  console.log(`VOTER is ${voter}`) // Logs but doesn't print individual image
+                  return (
+                  <Image key={i} src={voter} avatar /> 
+                  )
+                })
+              } else {
+                return (
+                <Image src={voters} avatar />
+                )
+              }    
+            })
             return (
               <Table.Row key={key}>
                 <Table.Cell style={backgroundImage}>
@@ -36,20 +50,7 @@ export default class PollTable extends Component {
                   </Header>
                 </Table.Cell>
                 <Table.Cell singleLine>
-                {[holiday.voters].map(voters => {
-                  if (Array.isArray(voters)) {
-                    voters.map((voter, i) => {
-                      console.log(`VOTER is ${voter}`) // Logs but doesn't print individual image
-                      return (
-                      <Image key={i} src={voter} avatar /> 
-                      )
-                    })
-                  } else {
-                    return (
-                    <Image src={voters} avatar />
-                    )
-                  }    
-                })}
+                   {images}
                 </Table.Cell>
                 <Table.Cell>
                   <p>£ {holiday.flightPrice}</p>
