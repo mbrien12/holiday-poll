@@ -36,8 +36,21 @@ export default class PollTable extends Component {
                   </Header>
                 </Table.Cell>
                 <Table.Cell singleLine>
-                {[holiday.voters].map(voter => {
-                  return  <Image src={voter} avatar />; // Check array methods properly. Returning a full array rather than each item :S
+                {[holiday.voters].map(voters => {
+                  if (Array.isArray(voters)) {
+                    voters.map(voter => {
+                      console.log(`VOTER is ${voter}`) // Logging but not printing out each image still
+                      return (
+                      <div>
+                      <Image src={voter} avatar /> 
+                      </div>
+                    )
+                    })
+                  } else {
+                    return (
+                    <Image src={voters} avatar />
+                    )
+                  }    
                 })}
                 </Table.Cell>
                 <Table.Cell>
