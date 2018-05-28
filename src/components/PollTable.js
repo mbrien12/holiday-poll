@@ -38,13 +38,11 @@ export default class PollTable extends Component {
                 <Table.Cell singleLine>
                 {[holiday.voters].map(voters => {
                   if (Array.isArray(voters)) {
-                    voters.map(voter => {
-                      console.log(`VOTER is ${voter}`) // Logging but not printing out each image still
+                    voters.map((voter, i) => {
+                      console.log(`VOTER is ${voter}`) // Logs but doesn't print individual image
                       return (
-                      <div>
-                      <Image src={voter} avatar /> 
-                      </div>
-                    )
+                      <Image key={i} src={voter} avatar /> 
+                      )
                     })
                   } else {
                     return (
